@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Start vdisplay at login. Copy to ~/Library/LaunchAgents/, replace
+  /Users/YOU with your home directory, then:
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.github.vdisplay.plist
+  Stop / remove:
+    launchctl bootout gui/$(id -u)/com.github.vdisplay
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.github.vdisplay</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/YOU/.local/bin/vdisplay</string>
+        <string>--width</string><string>3440</string>
+        <string>--height</string><string>1440</string>
+        <string>--hz</string><string>160</string>
+        <string>--keep-awake</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/vdisplay.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/vdisplay.log</string>
+</dict>
+</plist>

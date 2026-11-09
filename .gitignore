@@ -1,0 +1,4 @@
+/vdisplay
+*.log
+*.pid
+.DS_Store
